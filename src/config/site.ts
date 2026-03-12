@@ -15,4 +15,11 @@ export const siteConfig: SiteConfig = {
     background: "#FFFFFF",
     text: "#FFFFFF",
   },
+
+  contact: {
+    phone: "99999-9999",
+    phoneRaw: "99999999999",
+    instagram: "instagram",
+    instagramHandler: "instagram Handler",
+  },
 };

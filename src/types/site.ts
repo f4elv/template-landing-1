@@ -6,6 +6,8 @@ export interface SiteConfig {
   description: string;
 
   colors: SiteColors;
+
+  contact: Contact;
 }
 
 export interface SiteColors {
@@ -14,4 +16,11 @@ export interface SiteColors {
   accent: string;
   background: string;
   text: string;
+}
+
+export interface Contact {
+  phone: string;
+  phoneRaw: string;
+  instagram: string;
+  instagramHandler: string;
 }
