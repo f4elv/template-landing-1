@@ -10,6 +10,8 @@ export interface SiteConfig {
   contact: Contact;
 
   hero: Hero;
+
+  products: Products[];
 }
 
 export interface SiteColors {
@@ -33,4 +35,11 @@ export interface Hero {
   image: string;
   primaryButton: string;
   secondaryButton: string;
+}
+
+export interface Products {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
 }

@@ -1,9 +1,17 @@
+"use client";
+
+import Header from "@/components/Header";
+import Hero from "@/components/sections/hero";
+import Products from "@/components/sections/products";
+
 export default function Home() {
   return (
-    <main>
-      <div>
-        <p className="text-primary">Hello world</p>
-      </div>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Products />
+      </main>
+    </>
   );
 }
