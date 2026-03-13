@@ -8,6 +8,8 @@ export interface SiteConfig {
   colors: SiteColors;
 
   contact: Contact;
+
+  hero: Hero;
 }
 
 export interface SiteColors {
@@ -23,4 +25,12 @@ export interface Contact {
   phoneRaw: string;
   instagram: string;
   instagramHandler: string;
+}
+
+export interface Hero {
+  title: string;
+  subtitle: string;
+  image: string;
+  primaryButton: string;
+  secondaryButton: string;
 }
