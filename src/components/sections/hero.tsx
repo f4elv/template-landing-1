@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-12">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image

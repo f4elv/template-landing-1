@@ -63,4 +63,19 @@ export const siteConfig: SiteConfig = {
       image: "/boa.png",
     },
   ],
+
+  socialProof: {
+    image1: "/image.jpg",
+    image2: "/image.jpg",
+    image3: "/image.jpg",
+    image4: "/image.jpg",
+    image5: "/image.jpg",
+    image6: "/image.jpg",
+    image7: "/image.jpg",
+    image8: "/image.jpg",
+    image9: "/image.jpg",
+    image10: "/image.jpg",
+    image11: "/image.jpg",
+    image12: "/image.jpg",
+  },
 };

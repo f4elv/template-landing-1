@@ -6,7 +6,7 @@ import { Sigmar_One } from "next/font/google";
 
 export default function Products() {
   return (
-    <section id="products" className="py-20 bg-stone-100">
+    <section id="products" className="py-12 bg-stone-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
