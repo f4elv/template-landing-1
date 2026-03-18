@@ -78,4 +78,10 @@ export const siteConfig: SiteConfig = {
     image11: "/image.jpg",
     image12: "/image.jpg",
   },
+
+  howToOrder: {
+    step1: "kabslabdlajdsakljdsakldjaçs",
+    step2: "sapijlaksdjlaksdjlakdsjsalkdj",
+    step3: "osajlkajsdlakjdoasjdlakdjlaksdjal",
+  },
 };

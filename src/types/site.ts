@@ -14,6 +14,8 @@ export interface SiteConfig {
   products: Products[];
 
   socialProof: SocialProof;
+
+  howToOrder: HowToOrder;
 }
 
 export interface SiteColors {
@@ -58,4 +60,10 @@ export interface SocialProof {
   image10: string;
   image11: string;
   image12: string;
+}
+
+export interface HowToOrder {
+  step1: string;
+  step2: string;
+  step3: string;
 }

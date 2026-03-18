@@ -43,26 +43,27 @@ export default function Header() {
             <Button
               variant="transparent"
               className={`${isScrolled ? "text-black" : "text-white"}`}
-              onClick={() => scrollToSection("")}
+              onClick={() => scrollToSection("catalog")}
             >
               Catálogo
             </Button>
             <Button
               variant="transparent"
               className={`${isScrolled ? "text-black" : "text-white"}`}
-              onClick={() => scrollToSection("")}
+              onClick={() => scrollToSection("contact")}
             >
-              Sobre Nós
+              Contato
             </Button>
             <Button
               variant="transparent"
               className={`${isScrolled ? "text-black" : "text-white"}`}
-              onClick={() => scrollToSection("")}
+              onClick={() => scrollToSection("About")}
             >
-              Contato
+              Sobre Nós
             </Button>
+
             <a
-              href={`https://wa.me/${siteConfig.contact.phoneRaw}`}
+              href={`https://wa.me/${siteConfig.contact.instagram}`}
               target="_blank"
               rel="noopener noreferrer"
               className="ml-6 font-extrabold"
@@ -72,7 +73,7 @@ export default function Header() {
           </nav>
           {/* Mobile CTA */}
           <a
-            href={`https://wa.me/${siteConfig.contact.phoneRaw}`}
+            href={`https://wa.me/${siteConfig.contact.instagram}`}
             target="_blank"
             rel="noopener noreferrer"
             className="md:hidden ml-6 font-extrabold"
