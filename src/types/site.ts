@@ -11,11 +11,13 @@ export interface SiteConfig {
 
   hero: Hero;
 
-  products: Products[];
+  products: Products;
 
   socialProof: SocialProof;
 
   howToOrder: HowToOrder;
+
+  about: About;
 }
 
 export interface SiteColors {
@@ -42,12 +44,19 @@ export interface Hero {
 }
 
 export interface Products {
-  id: number;
-  name: string;
-  image: string;
+  title: string;
+  subtitle: string;
+  items: {
+    id: number;
+    name: string;
+    image: string;
+  }[];
+  CTA: string;
 }
 
 export interface SocialProof {
+  title: string;
+  subtitle: string;
   image1: string;
   image2: string;
   image3: string;
@@ -63,7 +72,21 @@ export interface SocialProof {
 }
 
 export interface HowToOrder {
-  step1: string;
-  step2: string;
-  step3: string;
+  title: string;
+  subtitle: string;
+  steps: {
+    emoji: string;
+    title: string;
+    description: string;
+  }[];
+  cta: string;
+}
+
+export interface About {
+  title: string;
+  subtitle?: string;
+  image: string;
+  paragraphs: string[];
+  highlights: string[];
+  tagline?: string;
 }

@@ -31,40 +31,47 @@ export const siteConfig: SiteConfig = {
     secondaryButton: "text for hero secondary button",
   },
 
-  products: [
-    {
-      id: 1,
-      name: "name of product 1",
-      image: "/amigurumi1.jpg",
-    },
-    {
-      id: 2,
-      name: "name of product 1",
-      image: "/amigurumi2.jpg",
-    },
-    {
-      id: 3,
-      name: "name of product 1",
-      image: "/amigurumi3.jpg",
-    },
-    {
-      id: 4,
-      name: "name of product 1",
-      image: "/amigurumi4.jpg",
-    },
-    {
-      id: 5,
-      name: "name of product 1",
-      image: "/amigurumi5.jpg",
-    },
-    {
-      id: 6,
-      name: "name of product 1",
-      image: "/boa.png",
-    },
-  ],
+  products: {
+    title: "blablabla",
+    subtitle: "blablabla",
+    items: [
+      {
+        id: 1,
+        name: "name of product 1",
+        image: "/amigurumi1.jpg",
+      },
+      {
+        id: 2,
+        name: "name of product 1",
+        image: "/amigurumi2.jpg",
+      },
+      {
+        id: 3,
+        name: "name of product 1",
+        image: "/amigurumi3.jpg",
+      },
+      {
+        id: 4,
+        name: "name of product 1",
+        image: "/amigurumi4.jpg",
+      },
+      {
+        id: 5,
+        name: "name of product 1",
+        image: "/amigurumi5.jpg",
+      },
+      {
+        id: 6,
+        name: "name of product 1",
+        image: "/boa.png",
+      },
+    ],
+    CTA: "blablabla",
+  },
 
   socialProof: {
+    title: "title of social proof",
+    subtitle: "subtitle of social proof",
     image1: "/image.jpg",
     image2: "/image.jpg",
     image3: "/image.jpg",
@@ -80,8 +87,38 @@ export const siteConfig: SiteConfig = {
   },
 
   howToOrder: {
-    step1: "kabslabdlajdsakljdsakldjaçs",
-    step2: "sapijlaksdjlaksdjlakdsjsalkdj",
-    step3: "osajlkajsdlakjdoasjdlakdjlaksdjal",
+    title: "Como fazer seu pedido",
+    subtitle: "É simples e rápido! Siga os passos abaixo:",
+    steps: [
+      {
+        emoji: "💬",
+        title: "Entre em contato",
+        description: "Chame no Instagram ou WhatsApp para fazer seu pedido",
+      },
+      {
+        emoji: "🎨",
+        title: "Personalize",
+        description: "Escolha cores, modelos e detalhes do seu amigurumi",
+      },
+      {
+        emoji: "📦",
+        title: "Receba em casa",
+        description: "Seu pedido é entregue no conforto da sua casa",
+      },
+    ],
+    cta: "Faça já sua encomenda!",
+  },
+
+  about: {
+    title: "Sobre nós",
+    subtitle: "Conheça nossa história",
+    image: "/imagefromowner.jpg",
+    paragraphs: [
+      "Somos especializados em criar amigurumis únicos e cheios de amor.",
+      "Cada peça é feita à mão, com atenção aos menores detalhes.",
+      "Nosso objetivo é levar carinho e criatividade para você ou quem você ama.",
+    ],
+    highlights: ["Feito à mão", "Personalizado", "Entrega rápida"],
+    tagline: "Amor em cada ponto",
   },
 };
