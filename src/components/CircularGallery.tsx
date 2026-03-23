@@ -4,8 +4,8 @@ import {
   Plane,
   Program,
   Renderer,
-  Texture,
   Transform,
+  Texture,
 } from "ogl";
 import { useEffect, useRef } from "react";
 
@@ -25,44 +25,8 @@ function lerp(p1: number, p2: number, t: number): number {
   return p1 + (p2 - p1) * t;
 }
 
-function getFontSize(font: string): number {
-  const match = font.match(/(\d+)px/);
-  return match ? parseInt(match[1], 10) : 30;
-}
-
 function isMobile(): boolean {
   return window.innerWidth <= 768;
-}
-
-function createTextTexture(
-  gl: GL,
-  text: string,
-  font: string = "bold 30px monospace",
-  color: string = "black",
-): { texture: Texture; width: number; height: number } {
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-  if (!context) throw new Error("Could not get 2d context");
-
-  context.font = font;
-  const metrics = context.measureText(text);
-  const textWidth = Math.ceil(metrics.width);
-  const fontSize = getFontSize(font);
-  const textHeight = Math.ceil(fontSize * 1.2);
-
-  canvas.width = textWidth + 20;
-  canvas.height = textHeight + 20;
-
-  context.font = font;
-  context.fillStyle = color;
-  context.textBaseline = "middle";
-  context.textAlign = "center";
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillText(text, canvas.width / 2, canvas.height / 2);
-
-  const texture = new Texture(gl, { generateMipmaps: false });
-  texture.image = canvas;
-  return { texture, width: canvas.width, height: canvas.height };
 }
 
 interface ScreenSize {
@@ -84,12 +48,9 @@ interface MediaProps {
   renderer: Renderer;
   scene: Transform;
   screen: ScreenSize;
-  text: string;
   viewport: Viewport;
   bend: number;
-  textColor: string;
   borderRadius?: number;
-  font?: string;
 }
 
 class Media {
@@ -102,12 +63,9 @@ class Media {
   renderer: Renderer;
   scene: Transform;
   screen: ScreenSize;
-  text: string;
   viewport: Viewport;
   bend: number;
-  textColor: string;
   borderRadius: number;
-  font?: string;
   program!: Program;
   plane!: Mesh;
   scale!: number;
@@ -128,12 +86,9 @@ class Media {
     renderer,
     scene,
     screen,
-    text,
     viewport,
     bend,
-    textColor,
     borderRadius = 0,
-    font,
   }: MediaProps) {
     this.geometry = geometry;
     this.gl = gl;
@@ -143,12 +98,9 @@ class Media {
     this.renderer = renderer;
     this.scene = scene;
     this.screen = screen;
-    this.text = text;
     this.viewport = viewport;
     this.bend = bend;
-    this.textColor = textColor;
     this.borderRadius = borderRadius;
-    this.font = font;
     this.createShader();
     this.createMesh();
     this.onResize();
@@ -325,11 +277,9 @@ class Media {
 }
 
 interface AppConfig {
-  items?: { image: string; text: string }[];
+  items?: { image: string }[];
   bend?: number;
-  textColor?: string;
   borderRadius?: number;
-  font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
 }
@@ -351,7 +301,7 @@ class App {
   scene!: Transform;
   planeGeometry!: Plane;
   medias: Media[] = [];
-  mediasImages: { image: string; text: string }[] = [];
+  mediasImages: { image: string }[] = [];
   screen!: { width: number; height: number };
   viewport!: { width: number; height: number };
   raf: number = 0;
@@ -373,9 +323,7 @@ class App {
     {
       items,
       bend = 1,
-      textColor = "#ffffff",
       borderRadius = 0,
-      font = "bold 30px Figtree",
       scrollSpeed = 2,
       scrollEase = 0.05,
     }: AppConfig,
@@ -390,7 +338,7 @@ class App {
     this.createScene();
     this.onResize();
     this.createGeometry();
-    this.createMedias(items, bend, textColor, borderRadius, font);
+    this.createMedias(items, bend, borderRadius);
     this.update();
     this.addEventListeners();
   }
@@ -424,20 +372,10 @@ class App {
   }
 
   createMedias(
-    items: { image: string; text: string }[] | undefined,
+    items: { image: string }[] | undefined,
     bend: number = 1,
-    textColor: string,
     borderRadius: number,
-    font: string,
   ) {
-    const mobile = isMobile();
-    const responsiveFont = mobile
-      ? font.replace(
-          /(\d+)px/,
-          (_, size) => `${Math.round(parseInt(size) * 0.7)}px`,
-        )
-      : font;
-
     const galleryItems = items && items.length ? items : [];
     this.mediasImages = galleryItems;
     this.medias = this.mediasImages.map((data, index) => {
@@ -450,12 +388,9 @@ class App {
         renderer: this.renderer,
         scene: this.scene,
         screen: this.screen,
-        text: data.text,
         viewport: this.viewport,
         bend,
-        textColor,
         borderRadius,
-        font: responsiveFont,
       });
     });
   }
@@ -594,11 +529,9 @@ class App {
 }
 
 interface CircularGalleryProps {
-  items?: { image: string; text: string }[];
+  items?: { image: string }[];
   bend?: number;
-  textColor?: string;
   borderRadius?: number;
-  font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
 }
@@ -606,9 +539,7 @@ interface CircularGalleryProps {
 export default function CircularGallery({
   items,
   bend = 3,
-  textColor = "#ffffff",
   borderRadius = 0.05,
-  font = "bold 30px Figtree",
   scrollSpeed = 2,
   scrollEase = 0.05,
 }: CircularGalleryProps) {
@@ -618,18 +549,18 @@ export default function CircularGallery({
     items && items.length
       ? items
       : [
-          { image: siteConfig.socialProof.image1, text: "" },
-          { image: siteConfig.socialProof.image2, text: "" },
-          { image: siteConfig.socialProof.image3, text: "" },
-          { image: siteConfig.socialProof.image4, text: "" },
-          { image: siteConfig.socialProof.image5, text: "" },
-          { image: siteConfig.socialProof.image6, text: "" },
-          { image: siteConfig.socialProof.image7, text: "" },
-          { image: siteConfig.socialProof.image8, text: "" },
-          { image: siteConfig.socialProof.image9, text: "" },
-          { image: siteConfig.socialProof.image10, text: "" },
-          { image: siteConfig.socialProof.image11, text: "" },
-          { image: siteConfig.socialProof.image12, text: "" },
+          { image: siteConfig.socialProof.image1 },
+          { image: siteConfig.socialProof.image2 },
+          { image: siteConfig.socialProof.image3 },
+          { image: siteConfig.socialProof.image4 },
+          { image: siteConfig.socialProof.image5 },
+          { image: siteConfig.socialProof.image6 },
+          { image: siteConfig.socialProof.image7 },
+          { image: siteConfig.socialProof.image8 },
+          { image: siteConfig.socialProof.image9 },
+          { image: siteConfig.socialProof.image10 },
+          { image: siteConfig.socialProof.image11 },
+          { image: siteConfig.socialProof.image12 },
         ];
 
   useEffect(() => {
@@ -637,16 +568,14 @@ export default function CircularGallery({
     const app = new App(containerRef.current, {
       items: galleryItems,
       bend,
-      textColor,
       borderRadius,
-      font,
       scrollSpeed,
       scrollEase,
     });
     return () => {
       app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [galleryItems, bend, borderRadius, scrollSpeed, scrollEase]);
 
   return (
     <div

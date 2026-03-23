@@ -25,7 +25,7 @@ export default function HowToOrder() {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {siteConfig.howToOrder.steps.map((step, index) => (
             <Reveal key={index} delay={0.3 + index * 0.1}>
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:-translate-y-1 transition">
+              <div className="bg-white min-h-50 p-6 rounded-2xl shadow-sm hover:-translate-y-1 transition">
                 <div className="text-4xl mb-4">{step.emoji}</div>
                 <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
                 <p className="text-stone-700 text-sm">{step.description}</p>
@@ -42,9 +42,7 @@ export default function HowToOrder() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="secondary">
-                {siteConfig.howToOrder.cta}
-              </Button>
+              <Button variant="secondary">{siteConfig.howToOrder.cta}</Button>
             </a>
 
             <span className="text-sm text-gray-500">

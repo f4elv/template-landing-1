@@ -24,13 +24,13 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Texto */}
           <div className="text-white space-y-4 text-center md:text-left">
-            <Reveal delay={0.2}>
+            <Reveal delay={0.1}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
                 {siteConfig.hero.title}
               </h1>
             </Reveal>
 
-            <Reveal delay={0.3}>
+            <Reveal delay={0.2}>
               <p className="text-lg sm:text-xl text-stone-100 leading-relaxed">
                 {siteConfig.hero.subtitle}
               </p>
@@ -38,7 +38,7 @@ export default function Hero() {
 
             {/* Botões */}
             <div className="flex flex-col gap-4 mt-8 px-4 md:px-0">
-              <Reveal delay={0.4}>
+              <Reveal delay={0.3}>
                 <a
                   href={`https://wa.me/${siteConfig.contact.phoneRaw}`}
                   target="_blank"
@@ -51,7 +51,7 @@ export default function Hero() {
                 </a>
               </Reveal>
 
-              <Reveal delay={0.6}>
+              <Reveal delay={0.5}>
                 <a
                   href={`https://wa.me/${siteConfig.contact.phoneRaw}`}
                   target="_blank"
@@ -68,7 +68,7 @@ export default function Hero() {
 
           {/* Imagem direita */}
           <div className="hidden md:block">
-            <Reveal delay={0.8}>
+            <Reveal delay={0.7}>
               <div className="relative w-full h-112.5 overflow-hidden rounded-3xl group">
                 <Image
                   src={siteConfig.businessLogo}

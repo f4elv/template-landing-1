@@ -57,7 +57,7 @@ export default function Header() {
             <Button
               variant="transparent"
               className={`${isScrolled ? "text-black" : "text-white"}`}
-              onClick={() => scrollToSection("About")}
+              onClick={() => scrollToSection("about")}
             >
               Sobre Nós
             </Button>
